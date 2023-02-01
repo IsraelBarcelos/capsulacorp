@@ -39,7 +39,7 @@
 .title {
     font-size: 48px !important;
     color: #86FAB4;
-
+    background-color: #0D110D;
     display: flex;
     align-items: center;
     justify-content: center;
