@@ -1,11 +1,11 @@
 import { Card } from 'react-bootstrap'
-import axios from "axios";
 
 import { useEffect, useState } from 'react';
 
 import "./app.css";
 
 import { ISeries, Series } from './Series';
+import AxiosSingleton from './singleton/AxiosSingleton';
 
 function App() {
 
@@ -17,7 +17,8 @@ function App() {
   )
 
   const fetchData = async () => {
-    await axios.get("http://localhost:9090/api/v1/series")
+    const axios = new AxiosSingleton;
+    await axios.getInstance().get("http://localhost:9090/api/v1/series")
       .then(data => {
         let remainder = 4 - (data.data.length % 4);
         console.table(remainder, data.data.length)
